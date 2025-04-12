@@ -9,6 +9,7 @@ void WasteCategorization() // A checklist to see what to do with it
     {
         printf("1. Organic\n");
         printf("2. Inorganic\n");
+        printf("3. Back to Main Menu\n");
         scanf("%d", &choice);
         if (choice == 1)
         {
@@ -19,6 +20,10 @@ void WasteCategorization() // A checklist to see what to do with it
         {
             printf("Inorganic waste includes plastics, metals, and glass.\n");
             printf("Look at your label and recycle if possible.\n");
+        }
+        else if (choice == 3)
+        {
+            return;
         }
         else
         {
