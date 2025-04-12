@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/*
+When finished copy and paste finished code here
+*/
+
 // void Waste Categorization 
 // void Collection Schedule
 
