@@ -6,17 +6,16 @@
     int points = 0;
     char name[20] = {""};
     char password[20] = {""};
-     
-    typedef struct TrashDaysSchedule        char TrashDays[7][20] = {};
-        char TrashTimes[20][6] = {};
-        typedef Struct Day
-        {
-            char[5][10] = {};
-        };
-    {
-        char TrashDays[100] = {};   
-    }
-
+    struct chedule Schedule;
+    typedef struct TrashDays
+};
+struct Day
+{
+    
+};
+struct Schedule
+{
+    struct Day Days[7] 
 };
 
 
@@ -66,24 +65,28 @@ void WasteSchedule(struct Account user) // gives info based on times.
     printf("\n\nCollection Schedule:\n");
     while (1)
     {
+        for(int i =  0; i < 6; ii++)
+        {
+            for()
+        }
         printf("1. Collection Schedule\n");
         printf("2. Print Schedule\n");
         printf("3. Back to Main Menu\n");
         scanf("%d", &choice);
-        for()
         switch(choice)
         {
             case(1)
             {
                 printf("Enter Trash days");
-                scanf("%s", &TrashDays);
-                TrashDays = strtok("TrashDays", " ");
+                scanf("%s", &);
                 
+                printf("Enter the time of pick up");
+                scanf("%c", &);
+                    
             }
             case(2)
             {
-                printf("Enter the day");
-                scanf("%c",&TrashDays[]);
+                printf("Your collection date: %c %c",)
             }
             case(3)
             {
@@ -122,12 +125,12 @@ void VerifyUser() //checks if user and password match
     char login_name[20];
     char login_password[20];
     printf("Enter your name: ");
-    //fgets
-    if (strcmp(name, ptr->name) == 0)
+    fgets(login_name, sizeof(login_name), stdin);
+    if (strcmp(login_name, ptr->name) == 0)
     {
         printf("Enter your password: ");
-        scanf("%s", &password);
-        if (strcmp(password, ptr->password) == 0)
+        fgets(login_password,sizeof(login_password), stdin);;
+        if (strcmp(login_password, ptr->password) == 0)
         {
             printf("Login successful!\n");
             return 1;
@@ -152,7 +155,7 @@ void RewardSystem() // Reward System, find user points and redeem points
     while (1)
     {
         printf("1. View Points\n");
-        printf("2. Redeem Points\n");
+        printf("2. View Ranking\n");
         printf("3. Back to Main Menu\n");
         scanf("%d", &choice);
         switch(choice)
@@ -161,17 +164,22 @@ void RewardSystem() // Reward System, find user points and redeem points
                 printf("You have %d points.\n", ptr->points);
                 break;
             case 2:
-                //calls functions to see what they can redeem
-                // same function allows them to redeem points
-                if (points <= 0)
-                    printf("You have no points to redeem.\n");
-                
+                ViewRanking();
+                break; 
             default:
                 printf("Invalid, choose an option\n");
         }
     }
 }
 
+void ViewRanking()
+{
+    //sort all users (for loop using cap)
+    //find current users placement (second for loop to find ranking)
+    //print out the ranking
+    printf("Ranking:\n");
+    
+}rawe
 void EduContent() // Educational Content
 
 {
