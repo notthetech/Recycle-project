@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//when finished with a function just commit the changes and push to github
+
 void WasteCategorization() // A checklist to see what to do with it
 {
     int choice = 0;
@@ -78,6 +80,7 @@ void RewardSystem() // Reward System, find user points and redeem points
 }
 
 void EduContent() // Educational Content
+
 {
     int choice = 0;
     printf("\n\nEducational Content:\n");
