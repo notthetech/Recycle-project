@@ -12,17 +12,19 @@ limit scanf to only take first char and then based off that
 */
 int main()// add struct to include members and their points
 {
-    typedef struct Data
-    {
-        char name[50];
-        int points;
-    } user;
     //figure out how to make them as pointers and be used
     int choice = 0;
-    printf("Welcome to the Waste Management System!\n");
+    int online = 0;
+    struct UserAccount* ptr;// pointer used in usertracking
+    UserTracking();//call USER TRACKING function here to create the accounts
+    VerifyUser();//call verify user function here to check if user is valid
+    //then code to verify login 
+    //then set online to 1 
+    //if online == 1 then run the rest of the program
     printf("Please select an option:\n");
-    
-    while(1)
+    if (online ==1)
+    {
+        while(1)
     {
         printf("1. Waste Categorization\n");
         printf("2. Collection Schedule\n");
@@ -61,5 +63,6 @@ int main()// add struct to include members and their points
             default:
                 printf("Invalid, choose an option\n");
         }
+    }
     }
 }
