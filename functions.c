@@ -17,11 +17,22 @@ void WasteCategorization() //What to do
         {
             case 1:
                 printf("Organic Waste selected.\n");
-                printf("Composting is the best option for organic waste.\n\n");
+                printf("Do you have a compost bin avaible?\n")
+                printf("1. Yes\n2. No\n");
+                scanf("%d", &choice);
+                    if (choice == 1)
+                        printf("Put the organic waste in the compost bin.\n\n");
+                    else if (choice == 2)
+                        printf("Put the organic waste in the trash bin.\n\n");
+                    else
+                        printf("Invalid choice. Please try again.\n");
                 break;
             case 2:
                 printf("Inorganic Waste selected.\n");
-                printf("Recycling is the best option for inorganic waste.\n\n");
+                printf("Look for a label on the item.\n");
+                printf("If it is recyclable following the directions, otherwise check to see if it fits in the recycling categories.\n\n");
+                printf("Plastic, Glass, Metal, E-Waste, Mixed\n");
+                printf("If it is not recyclable, put it in the trash bin.\n\n");
                 break;
             case 3:
                 printf("Returning to main menu.\n");
@@ -72,7 +83,7 @@ void WasteSchedule() // gives info based on times.
                 break;
             case 7:
                 printf("Pickup at 10:00 AM\n");
-                printf("Recycling not avaiable\n");
+                printf("Recycling at 10:00 AM\n");
                 break;     
             case 8:
                 printf("Returning to main menu.\n");
