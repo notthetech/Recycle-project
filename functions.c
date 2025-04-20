@@ -1,185 +1,89 @@
 #include <stdio.h>
 #include <string.h>
-//when finished with a function just commit the changes and push to github
- struct Account
-{
-    int points = 0;
-    char name[20] = {""};
-    char password[20] = {""};
-    struct chedule Schedule;
-    typedef struct TrashDays
-};
-struct Day
-{
-    
-};
-struct Schedule
-{
-    struct Day Days[7] 
-};
 
-
-
-
-
-void WasteCategorization() // A checklist to see what to do with it
+void WasteCategorization() //What to do
 {
     int choice = 0;
-    printf("\n\nWaste Categor
-
-Account Accounts[] = {};ization:\n");
-    printf("Describe the waste:\n");
+    printf("\n\nWaste Categorization:\n");
     while(1)
     {
-        printf("1. Organic\n");
-        printf("2. Inorganic\n");
-        printf("3. Back to Main Menu\n");
+        printf("Select the type of waste:\n");
+        printf("1. Organic Waste\n");
+        printf("2. Inorganic Waste\n");
+        printf("3. Return to Main Menu\n");
         scanf("%d", &choice);
-        if (choice == 1)
+        getchar();
+        switch(choice)
         {
-            printf("Organic waste includes food scraps, yard waste, and paper products.\n");
-            printf("Look at your label and compost if possible.\n");
-        }
-        else if (choice == 2)
-        {
-            printf("Inorganic waste includes plastics, metals, and glass.\n");
-            printf("Look at your label and recycle if possible.\n");
-        }
-        else if (choice == 3)
-        {
-            return;
-        }
-        else
-        {
-            printf("Invalid choice, please try again.\n");
+            case 1:
+                printf("Organic Waste selected.\n");
+                printf("Composting is the best option for organic waste.\n\n");
+                break;
+            case 2:
+                printf("Inorganic Waste selected.\n");
+                printf("Recycling is the best option for inorganic waste.\n\n");
+                break;
+            case 3:
+                printf("Returning to main menu.\n");
+                return; // Return to main menu
+            default:
+                printf("Invalid choice. Please try again.\n");
+                continue;
         }
     }
 }
-//an array to store the days trash is delivered
 
-
-void WasteSchedule(struct Account user) // gives info based on times. 
+void WasteSchedule() // gives info based on times. 
 {
     
     int choice = 0;
     printf("\n\nCollection Schedule:\n");
-    while (1)
+    while(1)// inf till quit
     {
-        for(int i =  0; i < 6; ii++)
-        {
-            for()
-        }
-        printf("1. Collection Schedule\n");
-        printf("2. Print Schedule\n");
-        printf("3. Back to Main Menu\n");
-        scanf("%d", &choice);
-        switch(choice)
-        {
-            case(1)
-            {
-                printf("Enter Trash days");
-                scanf("%s", &);
-                
-                printf("Enter the time of pick up");
-                scanf("%c", &);
-                    
-            }
-            case(2)
-            {
-                printf("Your collection date: %c %c",)
-            }
-            case(3)
-            {
-                return;
-            }
-            //code for collection schedule calling from other files
-            default:
-                printf("Invalid, choose an option\n");
-        }
-    }
-}
-
-void UserTracking()// has the user make all the accounts at once and then use them in the other functions
-{
-    int UserCap = 0;// sets limit so easier to manage
-    printf("Welcome to the Waste Management System!\n");
-    printf("User Management");
-    printf("Enter the max number of users");
-    scanf("%d", &UserCap);
-    ptr = (struct UserAccount*)malloc(UserCap * sizeof(struct UserAccounnt));
-    for (int i = 0; i < UserCap; i++)
-    {
-        printf("Enter your name: ");
-        scanf("%s", (ptr+i)->name);
-        printf("Enter your password: ");
-        scanf("%s", (ptr+i)->password);
-        printf("Enter your points: ");
-        scanf("%d", (ptr+i)->points);
-    }
-    //code for loop to add data using max users to determing for how long
-}
-//maybe add a ranking feature to the user tracking system
-
-void VerifyUser() //checks if user and password match
-{
-    char login_name[20];
-    char login_password[20];
-    printf("Enter your name: ");
-    fgets(login_name, sizeof(login_name), stdin);
-    if (strcmp(login_name, ptr->name) == 0)
-    {
-        printf("Enter your password: ");
-        fgets(login_password,sizeof(login_password), stdin);;
-        if (strcmp(login_password, ptr->password) == 0)
-        {
-            printf("Login successful!\n");
-            return 1;
-        }
-        else
-        {
-            printf("Invalid password.\n");
-            return 0;
-        }
-    }
-    else
-    {
-        printf("Invalid name.\n");
-        return 0;
-    }
-}
-
-void RewardSystem() // Reward System, find user points and redeem points
-{
-    int choice = 0;
-    printf("\n\nReward System:\n");
-    while (1)
-    {
-        printf("1. View Points\n");
-        printf("2. View Ranking\n");
-        printf("3. Back to Main Menu\n");
+        printf("Select the day of the week:\n");
+        printf("1. Monday, 2. Tuesday, 3. Wednesday, 4. Thursday, 5. Friday, 6. Saturday, 7. Sunday\n");
+        printf("8. Return to Main Menu\n");
         scanf("%d", &choice);
         switch(choice)
         {
             case 1:
-                printf("You have %d points.\n", ptr->points);
+                printf("Pickup at 10:00 AM\n");
+                printf("Recycling at 2:00 PM\n");
                 break;
             case 2:
-                ViewRanking();
-                break; 
+                printf("Pickup not available\n");
+                printf("Recycling not available\n");
+                break;
+            case 3:
+                printf("Pickup not available\n");
+                printf("Recycling not available\n");
+                break;
+            case 4:
+                printf("Pickup at 9:00 AM\n");
+                printf("Recycling at 1:00 PM\n");
+                break;
+            case 5:
+                printf("Pickup not availble\n");
+                printf("Recycling not avaible\n");
+                break;
+            case 6:
+                printf("Pickup not avaiable\n");
+                printf("Recycling not available\n");
+                break;
+            case 7:
+                printf("Pickup at 10:00 AM\n");
+                printf("Recycling not avaiable\n");
+                break;     
+            case 8:
+                printf("Returning to main menu.\n");
+                return; // Return to main menu
             default:
-                printf("Invalid, choose an option\n");
+                printf("Invalid choice. Please try again.\n");
+                continue;  
         }
     }
 }
 
-void ViewRanking()
-{
-    //sort all users (for loop using cap)
-    //find current users placement (second for loop to find ranking)
-    //print out the ranking
-    printf("Ranking:\n");
-    
-}rawe
 void EduContent() // Educational Content
 
 {
@@ -199,15 +103,18 @@ void EduContent() // Educational Content
                 printf("Organic\nPaper\nPlasic\nGlass\nMetal\nE-Waste\nMixed\n");
                 break;
             case 2:
-                printf("Info\n");
+                printf("You sort out your organic and inorganic material\n");
+                printf("You put your inorganic material in the recycling bin once checked\n");
+                printf("You put your organic material in the compost bin once checked\n");
                 break;
             case 3:
-                printf("Info\n");
+                printf("Put your non poisonous organic material in the compost bin\n");
                 break;
             case 4:
-                printf("Info\n");
+                printf("Buy less junk, recycle more, compost more\n");
                 break;
             case 5:
+                printf("Returning to main menu.\n");
                 return;
             default:
                 printf("Invalid, choose an option\n");
