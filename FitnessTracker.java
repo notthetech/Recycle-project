@@ -226,7 +226,7 @@ class Workout implements Serializable //WORKOUTS and time
 	
 	public void setMinutes(int minutes)
 	{
-	    this.minues = minutes;
+	    this.minutes = minutes;
 	}
 	
 	public int getCalories() 
