@@ -14,7 +14,7 @@ public class FitnesseLogin {
     public static void main(String[] args) {
         loadUsers();  // load returning users
 
-        System.out.println("=== Workout Only Fitness Tracker ===");
+        System.out.println("=== FitTrack ===");
 
         // Ask for name
         System.out.print("Enter your name: ");
