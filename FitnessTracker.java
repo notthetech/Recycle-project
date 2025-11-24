@@ -52,23 +52,25 @@ class Main //FitnesseLogin just add new data or file
 			System.out.println("\n--- MENU ---");
 			System.out.println("1) Log Workout");
 			System.out.println("2) View Workout History");
-			System.out.println("3) Save & Exit");
+			System.out.println("3) Update Workout");
+            System.out.println("4) Save & Exit");
 			System.out.print("Choose 1-3: ");
 
 			int choice = readInt();
 
 			if (choice == 1) logWorkoutUI(user);
-			else if (choice == 2) user.showWorkouts();
-			else if (choice == 3)
-			{
-				saveUsers();
-				System.out.println("Saved! Bye!");
-				break;
-			}
-			else
-			{
-				System.out.println("Invalid choice.");
-			}
+            else if (choice == 2) user.showWorkouts();
+            else if (choice == 3) updateWorkoutUI(user);
+            else if (choice == 4)
+            {
+            	saveUsers();
+            	System.out.println("Saved! Bye!");
+            	break;
+            }
+            else
+            {
+            	System.out.println("Invalid choice.");
+            }
 		}
 	}
 
@@ -166,6 +168,53 @@ class Main //FitnesseLogin just add new data or file
 			users = new ArrayList<>(); 
 		}
 	}
+	
+	static void updateWorkoutUI(FitnessUser user)
+    {
+    	if (user.getWorkouts().isEmpty())
+    	{
+    		System.out.println("No workouts logged.");
+    		return;
+    	}
+    
+    	System.out.println("\nYour Workouts:");
+    	for (int i = 0; i < user.getWorkouts().size(); i++)
+    		System.out.println(i + ") " + user.getWorkouts().get(i));
+    
+    	System.out.print("\nChoose workout index: ");
+    	int index = readInt();
+    
+    	System.out.println("Task Status:");
+    	System.out.println("1) NOT_STARTED");
+    	System.out.println("2) IN_PROGRESS");
+    	System.out.println("3) COMPLETED");
+    	System.out.print("Choose: ");
+    
+    	int choice = readInt();
+    	TaskStatus status;
+    
+    	if (choice == 1) status = TaskStatus.NOT_STARTED;
+    	else if (choice == 2) status = TaskStatus.IN_PROGRESS;
+    	else if (choice == 3) status = TaskStatus.COMPLETED;
+    	else
+    	{
+    		System.out.println("Invalid status.");
+    		return;
+    	}
+    
+    	System.out.print("Progress (0-100): ");
+    	int progress = readInt();
+    
+    	if (progress < 0 || progress > 100)
+    	{
+    		System.out.println("Invalid progress.");
+    		return;
+    	}
+    
+    	user.updateWorkout(index, status, progress);
+    
+    	System.out.println("Workout updated!");
+    }
 }
 
 abstract class User implements Serializable //basic User data
@@ -210,14 +259,17 @@ class Workout implements Serializable //WORKOUTS and time
 	private int minutes;
 	private int calories;//added every getter and setter just in case
 	private LocalDate date;
+	private TaskStatus status = TaskStatus.NOT_STARTED;
+	private int progress = 0;
 
 	public Workout(WorkoutType type, int minutes, int calories)
-	{
-		this.type = type;
-		this.minutes = minutes;
-		this.calories = calories;
-		this.date = LocalDate.now();
-	}
+    {
+    	this.type = type;
+    	this.minutes = minutes;
+    	this.calories = calories;
+    	this.date = LocalDate.now();
+    }
+
 
 	public int getMinutes() 
 	{
@@ -258,11 +310,31 @@ class Workout implements Serializable //WORKOUTS and time
 	{
 	    this.date = date;
 	}
+	
+	public TaskStatus getStatus()
+    {
+	    return status;
+    }
+
+    public void setStatus(TaskStatus status)
+    {
+    	this.status = status;
+    }
+
+    public int getProgress()
+    {
+    	return progress;
+    }
+    
+    public void setProgress(int progress)
+    {
+    	this.progress = progress;
+    }
 
 	@Override
 	public String toString()
 	{
-		return date + " - " + type + " (" + minutes + " min, " + calories + " cal)";
+		return date + " - " + type + " (" + minutes + " min, " + calories + " cal)" + " | " + status + " | " + progress + "%";
 	}
 }
 
@@ -284,14 +356,15 @@ class FitnessUser extends User
 	}
 
 	public void logWorkout(WorkoutType type, int minutes)
-	{
-		workouts.add(new Workout(type, minutes, 0));
-	}
+    {
+    	workouts.add(new Workout(type, minutes, 0));
+    }
+    
+    public void logWorkout(WorkoutType type, int minutes, int calories)
+    {
+    	workouts.add(new Workout(type, minutes, calories));
+    }
 
-	public void logWorkout(WorkoutType type, int minutes, int calories)
-	{
-		workouts.add(new Workout(type, minutes, calories));
-	}
 
 	public void showWorkouts()
 	{
@@ -319,4 +392,16 @@ class FitnessUser extends User
 	{
 		return workouts;
 	}
+	
+	public void updateWorkout(int index, TaskStatus status, int progress)
+    {
+    	if (index < 0 || index >= workouts.size())
+    	{
+    		System.out.println("Invalid workout index.");
+    		return;
+    	}
+    
+    	workouts.get(index).setStatus(status);
+    	workouts.get(index).setProgress(progress);
+    }
 }
